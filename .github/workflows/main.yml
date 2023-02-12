@@ -1,0 +1,25 @@
+name: Deploy
+
+# Controls when the workflow will run
+'on':
+  #triggers the workflow whenever a push is made to the main branch
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy_to_production:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      # this install the dependencies specified in your package.json file into the current workflow
+      - name: install dependencies
+        run: npm install ci
+      - name: build
+        run : npm run build
+      - name: deploy to production
+        uses: w9jds/firebase-action@master
+        with:
+          args: deploy --only hosting
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
