@@ -1,0 +1,34 @@
+
+GET http://localhost:7000
+
+###
+
+POST http://localhost:7000/signup
+Content-Type: application/json
+
+{
+    "name":"Ambulimama",
+    "email":"ambuls@gmail.com",
+    "password":"ambuls"
+}
+
+###
+
+POST http://localhost:7000/login
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtYnVsc0BnbWFpbC5jb20iLCJpYXQiOjE2NzYxNzY5NjgsImV4cCI6MTY3ODc2ODk2OH0.-u0VO8SzeWLi55Sg0R92X83XV5NosvQanRIs2MDlao0
+Content-Type: application/json
+
+{
+    "email":"ambuls@gmail.com",
+    "password":"ambuls"
+}
+
+###
+
+POST http://localhost:7000/orderplaced
+Content-Type: application/json
+
+{
+    "name":"Raggy",
+    "email":"ambulimama417@gmail.com"
+}

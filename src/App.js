@@ -1,24 +1,30 @@
 
 import './App.css';
-import { BrowserRouter as Router,Routes, Route, Link } from 'react-router-dom';
-import Content from './Components/Content';
+import {Route,Routes, BrowserRouter } from 'react-router-dom';
+import ProductPage from './Components/ProductPage';
+import CheckoutPage from './Components/CheckoutPage';
+import {ChakraProvider} from '@chakra-ui/react'
+import React from 'react'
 import Login from './Components/Login';
-import Navbar from './Components/Navbar';
-import Create_new from './Components/Create_new';
-function App() {
-  return (<>
-  {/* <Navbar/>
-  <Content/> */}
+import Signup from './Components/Signup';
+import Contact from './Components/Contact';
+import About from './Components/About';
+export default function App() {
+  let [userCart,addToCart] = React.useState([])
   
-  {/* <Create_new/> */}
-  <Router>
-    <Routes>
-      <Route exact path='/' element={<Content/>}></Route>
-      <Route exact path='/login' element={<Login/>}></Route>
-      <Route exact path='/signup' element={<Create_new/>}></Route>
-    </Routes>
-  </Router>
-  </>);
+  return (
+  <>
+  <ChakraProvider>
+    <About></About>
+  <Routes>
+    <Route path="/" element={<Login/>}></Route>
+    <Route path="/signup" element={<Signup/>}></Route>
+    <Route path="/product" element={<ProductPage addToCart={addToCart} cart={userCart}/>}></Route>
+    <Route path="/checkout" element={<CheckoutPage cart={userCart}/>}></Route>
+    <Route path="/contact" element={<Contact/>}></Route>
+  </Routes>
+  </ChakraProvider>
+  </>
+  );
 }
 
-export default App;

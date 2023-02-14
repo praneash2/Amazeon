@@ -1,18 +1,27 @@
 import React from 'react'
-import cavil from './henry-cavill.jpg'
+import { Link } from 'react-router-dom'
+
 
 export default function Navbar() {
-  return (
-    <div className='bg-gray-800 p-2 flex justify-between'>
-        <img className="rounded-[50%]" src={cavil} alt="" width="100px" height="100px"></img>
-        <div>
-        <input type="text" />
+    let hoverAnimation = `py-11 px-1 hover:border-b-cyan-600 hover:border-b-2 duration-200 h-full`
+  return (<>
+    <div name="Navbar main" className="min-h-[15vh] max-h-[15vh] bg-[#131a35] flex justify-between items-center sticky top-0 z-10 border-b-cyan-600 border-b-2">
+        <div className='max-w-[15vh]'>
+        <Link to="/">
+            <img src="./Amaze_ON.png" alt="" className='max-h-full max-w-full'/>
+        </Link>
         </div>
-        
-        <label className="text-white" htmlFor="cart">1</label>
-        <img name="cart" 
-        src="https://img.icons8.com/external-kiranshastry-lineal-kiranshastry/64/null/external-shopping-cart-miscellaneous-kiranshastry-lineal-kiranshastry.png"
-        alt=""/>
+        <div className='text-white font-light absolute ml-[10vw]'>
+            Logged In as,
+            <div>Siddhu Jaykay</div>
+        </div>
+        <div className={`text-white relative font-bold cursor-pointer hover:scale-105 duration-200 ${hoverAnimation}`}><Link to="/">Products</Link></div>
+        <div className={`text-white font-bold cursor-pointer hover:scale-105 duration-200 ${hoverAnimation}`}>Contact</div>
+        <div className={`text-white font-bold cursor-pointer hover:scale-105 duration-200 ${hoverAnimation}`}>About</div>
+        <div className={`text-red-600 font-bold cursor-pointer hover:scale-105 duration-200 ${hoverAnimation}`}>Logout</div>
+        <div className='image-cropper rounded-full mx-5 w-[10vh] h-[10vh]'>
+            <img src="./henry-cavill.jpg" alt="" className='rounded-full w-full h-full'/>
+        </div>
     </div>
-  )
+    </>)
 }
